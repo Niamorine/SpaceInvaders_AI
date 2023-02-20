@@ -6,6 +6,7 @@ import pygame
 class Player(Ship):
     def __init__(self, x, y, health=100):
         super().__init__(x, y, health)
+        self.vel = 5
         self.ship_img = YELLOW_SPACE_SHIP
         self.laser_img = YELLOW_LASER
         self.mask = pygame.mask.from_surface(self.ship_img)
@@ -22,6 +23,18 @@ class Player(Ship):
                     if laser.collision(obj):
                         objs.remove(obj)
                         self.lasers.remove(laser)
+
+    def move_left(self):
+        self.x -= self.vel
+
+    def move_right(self):
+        self.x += self.vel
+
+    def move_up(self):
+        self.y -= self.vel
+
+    def move_down(self):
+        self.y += self.vel
 
     def draw(self, window):
         super().draw(window)

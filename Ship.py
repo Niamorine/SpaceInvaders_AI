@@ -1,6 +1,7 @@
 from Laser import Laser
 from consts import HEIGHT, WIDTH
 
+
 class Ship:
     COOLDOWN = 30
 

@@ -2,19 +2,10 @@ from Enemy import Enemy
 from Player import Player
 import random
 from collide import collide
-
-import pygame
 from consts import *
 
-pygame.font.init()
 
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Space Shooter Tutorial")
-BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background-black.png")), (WIDTH, HEIGHT))
-
-
-
-def main():
+def main(draw):
     run = True
     FPS = 60
     clock = pygame.time.Clock()
@@ -54,8 +45,9 @@ def main():
         pygame.display.update()
 
     while run:
-        clock.tick(FPS)
-        redraw_window()
+        if draw:
+            clock.tick(FPS)
+            redraw_window()
 
         if lives <= 0 or player.health <= 0:
             lost = True
@@ -81,13 +73,13 @@ def main():
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_q] and player.x - player_vel > 0:  # left
-            player.x -= player_vel
+            player.move_left()
         if keys[pygame.K_d] and player.x + player_vel + player.get_width() < WIDTH:  # right
-            player.x += player_vel
+            player.move_right()
         if keys[pygame.K_z] and player.y - player_vel > 0:  # up
-            player.y -= player_vel
+            player.move_up()
         if keys[pygame.K_s] and player.y + player_vel + player.get_height() + 15 < HEIGHT:  # down
-            player.y += player_vel
+            player.move_down()
         if keys[pygame.K_SPACE]:
             player.shoot()
 
@@ -120,9 +112,15 @@ def main_menu():
             if event.type == pygame.QUIT:
                 run = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                main()
+                main(True)
 
     pygame.quit()
 
+
 if __name__ == "__main__":
+    pygame.font.init()
+
+    WIN = pygame.display.set_mode((WIDTH, HEIGHT))
+    pygame.display.set_caption("Space Shooter Tutorial")
     main_menu()
+
