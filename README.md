@@ -2,4 +2,4 @@
 
 Pour jouer soi-même: play.py
 
-L'ia n'est pas encore fa
+L'ia n'est pas encore faite
