@@ -10,9 +10,10 @@ debug = False
 
 
 class GameAi:
-    def __init__(self, game, draw):
+    def __init__(self, game, window, draw):
         self.genome = None
         self.game = game
+        self.window = window
         self.draw = draw
 
     def move_left(self):
@@ -30,9 +31,7 @@ class GameAi:
         net = neat.nn.FeedForwardNetwork.create(genome, c)
 
         run = True
-        score = 0
         while run:
-
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     quit()
@@ -69,6 +68,9 @@ class GameAi:
             self.game.loop()
 
 
+    def calculate_fitness(self, genome, game_info):
+        genome.fitness += game_info.nb_enemies_killed
+
     def train_ai(self, genome, c):
         run = True
         start_time = time.time()
@@ -77,12 +79,10 @@ class GameAi:
 
         count = 0
         while run:
-            if self.draw:
-                for event in pygame.event.get():
-                    if event.type == pygame.QUIT:
-                        quit()
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    quit()
 
-            prev_pos = self.game.player.x
             nearest_enemy_y = 1000000
             nearest_enemy_x = 0
             laser_above = False
@@ -112,19 +112,7 @@ class GameAi:
                 case 2:
                     self.move_right()
                 case 3:
-                    # penalty for not doing anything
-                    genome.fitness -= 0.005
-
-            # bonus for surviving
-            genome.fitness += 0.01
-
-            # penalty for being at the same position as before
-            if self.game.player.x == prev_pos:
-                genome.fitness -= 0.01
-
-            # penalty for being under a laser
-            if laser_above:
-                genome.fitness -= 0.5
+                    genome.fitness -= 0.001
 
             if debug:
                 count += 1
@@ -139,24 +127,25 @@ class GameAi:
             game_info = self.game.loop()
 
             if game_info.lost:
-                genome.fitness += 50 * game_info.nb_enemies_killed
+                self.calculate_fitness(genome, game_info)
                 break
 
 
 def eval_genomes(genomes, c):
+    window = pygame.display.set_mode((WIDTH, HEIGHT))
     draw = False
     human = False
     fast = False
 
     for i, (genome_id, genome) in enumerate(genomes):
         genome.fitness = 0
-        game = GameAi(Game(WIDTH, HEIGHT, draw, human, fast), draw)
+        game = GameAi(Game(window, WIDTH, HEIGHT, draw, human, fast), window, draw)
 
         game.train_ai(genome, c)
 
 
 def run_neat(c):
-    p = neat.Checkpointer.restore_checkpoint("neat-checkpoint-119")
+    p = neat.Checkpointer.restore_checkpoint("neat-checkpoint-1702")
     # p = neat.Population(c)
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
@@ -176,7 +165,7 @@ def test_ai(c):
 
     window = pygame.display.set_mode((WIDTH, HEIGHT))
 
-    game = GameAi(Game(WIDTH, HEIGHT, draw=True, human=False, fast=False), draw=True)
+    game = GameAi(Game(window, WIDTH, HEIGHT, draw=True, human=False, fast=False), window, draw=True)
     game.test_ai(best, c)
 
 

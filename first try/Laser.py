@@ -22,6 +22,7 @@ class Laser:
         self.y += vel
         self.true_y += vel
 
+
     def off_screen(self, height):
         return not (height >= self.y >= 0)
 
