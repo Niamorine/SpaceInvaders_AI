@@ -64,9 +64,9 @@ class GameAi:
             # Normalizing inputs
             norm_relative_enemy_x = relative_enemy_x / WIDTH
             norm_relative_enemy_y = relative_enemy_y / HEIGHT
-            # norm_player_x = self.game.player.x / WIDTH
-            # norm_player_y = self.game.player.y / HEIGHT
-            # norm_nearest_laser_dist = nearest_laser_dist / ((WIDTH ** 2 + HEIGHT ** 2) ** 0.5)
+            norm_player_x = self.game.player.x / WIDTH
+            norm_player_y = self.game.player.y / HEIGHT
+            norm_nearest_laser_dist = nearest_laser_dist / ((WIDTH ** 2 + HEIGHT ** 2) ** 0.5)
             norm_cooldown = self.game.player.cool_down_counter / self.game.player.COOLDOWN
             norm_nearest_laser_relative_x = nearest_laser_relative_x / WIDTH
             norm_nearest_laser_relative_y = nearest_laser_relative_y / HEIGHT
@@ -193,7 +193,6 @@ def eval_genomes(genomes, c):
 
 
 def run_neat(c):
-    """Train the ai"""
     p = neat.Checkpointer.restore_checkpoint("neat-checkpoint-173")
     # p = neat.Population(c)
     p.add_reporter(neat.StdOutReporter(True))
@@ -201,7 +200,7 @@ def run_neat(c):
     p.add_reporter(stats)
     p.add_reporter(neat.Checkpointer(1))
 
-    best = p.run(eval_genomes, 1)  # second argument is the max number of generation before it stops
+    best = p.run(eval_genomes, 1)
 
     with open("best.pickle", "wb") as f:
         pickle.dump(best, f)
@@ -209,7 +208,6 @@ def run_neat(c):
 
 
 def test_ai(c):
-    """Test the current best ai in a game window"""
     with open("best.pickle", "rb") as f:
         best = pickle.load(f)
 
@@ -221,7 +219,6 @@ def test_ai(c):
 
 
 def vis_net(c):
-    """Draw the neural network of the ai"""
     with open("best.pickle", "rb") as f:
         best = pickle.load(f)
 

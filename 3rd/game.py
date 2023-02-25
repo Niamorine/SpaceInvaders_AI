@@ -25,7 +25,7 @@ class Game:
         self.FPS = 60
         self.clock = pygame.time.Clock()
         self.level = 0
-        self.lives = 3
+        self.lives = 1
         self.main_font = pygame.font.SysFont("comicsans", 50)
         self.lost_font = pygame.font.SysFont("comicsans", 60)
 
@@ -50,6 +50,9 @@ class Game:
 
         self.window.blit(lives_label, (10, 10))
         self.window.blit(level_label, (WIDTH - level_label.get_width() - 10, 10,))
+        round(1.256, 2)
+        score_label = self.main_font.render(f"Score: {round(self.score, 2)}", True, (255, 255, 255))
+        self.window.blit(score_label, ((WIDTH-150)/2, 10))
 
         for an_enemy in self.enemies:
             an_enemy.draw(self.window)
@@ -64,7 +67,15 @@ class Game:
     def loop(self):
         global prev_pos
 
-
+        self.score += 0.01
+        if self.player.x == prev_pos:
+            self.score -= 0.05
+        for enemy in self.enemies:
+            for laser in enemy.lasers:
+                if self.player.x <= laser.true_x - laser.true_width / 2 and laser.true_x + laser.true_width / 2 <= self.player.x + self.player.get_width() and self.player.y >= laser.true_y:
+                    laser_above = True
+                    self.score -= 0.1
+        prev_pos = self.player.x
         if self.draw:
             if not self.fast:
                 self.clock.tick(self.FPS)
