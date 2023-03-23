@@ -373,3 +373,20 @@ if __name__ == "__main__":
     run_neat(config)
     # test_ai(config)
     # vis_net(config)
+
+    """
+    tab = [[0 for i in range(1,10)] for j in range(1,10)]
+    for enemy in self.game.enemies:
+                for laser in enemy.lasers:
+                    laser_matrice_x = laser.true_x - self.game.player.true_x + 100
+                    laser_matrice_y = laser.true_y - self.game.player.true_y + 100
+
+                    dist = (laser_relative_x ** 2 + laser_relative_y ** 2) ** 0.5
+                    case_x = (int)laser_matrice_x * 20
+                    case_y = (int)laser_matrice_y * 20
+                    tab[case_x][case_y] = 1;
+                    tab[case_x][case_y -1] = 1;
+                    tab[case_x][case_y+1]=1
+
+
+    """
