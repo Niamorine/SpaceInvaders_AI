@@ -1,11 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f163f5ea-2092-47cd-a86a-2ce2ff0049da" name="Changes" comment="" />
+    <list default="true" id="f163f5ea-2092-47cd-a86a-2ce2ff0049da" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/best.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/best.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-11" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-12" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-13" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-14" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-15" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-16" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-17" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-18" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-19" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-20" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-21" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-22" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-23" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-24" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-25" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-26" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-27" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-28" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-29" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-30" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-31" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-32" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-33" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-34" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-35" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-36" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-37" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-38" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-39" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-40" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-41" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-42" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-43" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-44" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-45" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-46" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-47" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-48" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-49" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-50" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-51" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-52" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-53" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-54" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-55" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-56" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-57" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-58" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-59" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-60" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-61" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-62" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-63" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-64" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-65" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-66" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-67" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-68" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-69" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-70" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-71" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-72" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-73" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-74" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-75" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-76" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-77" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-78" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-79" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-80" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-81" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/neat-checkpoint-9" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -15,13 +109,14 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/obsevrer/Documents/INFOS6/IA/projet_IA/Good_AI/SpaceInvaders_AI"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/obsevrer/Documents/INFOS6/IA/projet_IA/Good_AI/SpaceInvaders_AI&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="AI_coordinate_algo" />
@@ -60,5 +155,16 @@
       <updated>1683820720448</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

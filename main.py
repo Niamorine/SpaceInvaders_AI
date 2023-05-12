@@ -73,41 +73,43 @@ class GameAi:
 
             norm_cooldown = self.game.player.cool_down_counter / self.game.player.COOLDOWN
 
-            tab_enemy_lasers = [0 for i in range(0, 30)]
+            tab_enemy_lasers = [-1 for i in range(0, 24)]
             j = 0
             for enemy in self.game.enemies:
                 for laser in enemy.lasers:
                     if laser.true_y > 0 and 0 < laser.true_x < WIDTH:
-                        case_x = int(laser.true_x * 40 / WIDTH)
-                        case_y = int(laser.true_y * 11 / HEIGHT)
+                        case_x = int(laser.true_x * 60 / WIDTH)
+                        case_y = int(laser.true_y * 60 / HEIGHT)
                         # print(case_x, case_y)
                         tab_enemy_lasers[j] = case_x
                         tab_enemy_lasers[j + 1] = case_y
                         j = j + 2
-                        # tab_enemy_lasers[case_x][case_y - 1] = 1
-                        # tab_enemy_lasers[case_x][case_y + 1] = 1
 
-            tab_player_lasers = [0 for j in range(1, 41)]
+            tab_player_lasers = [-1 for j in range(0, 12)]
+            i = 0
             for laser in self.game.player.lasers:
                 laser_matrice_x = laser.true_x
                 laser_matrice_y = laser.true_y
-                case_x = int(laser.true_x * 40 / WIDTH)
-                tab_player_lasers[case_x] += 1
+                case_x = int(laser.true_x * 60 / WIDTH)
+                tab_player_lasers[i] = case_x
+                i = i + 1
 
             tab_enemy = [-1 for i in range(0, 20)]
-            j = 0;
+            j = 0
             for enemy in self.game.enemies:
+                matrice_x = enemy.true_x
+                matrice_y = enemy.true_y
                 if 0 < enemy.true_y:
-                    case_x = int(enemy.true_x * 40 / WIDTH)
-                    case_y = int(enemy.true_y * 5 / HEIGHT)
+                    case_x = int(enemy.true_x * 60 / WIDTH)
+                    case_y = int(enemy.true_y * 60 / HEIGHT)
                     # print(case_x, case_y)
-                    if j < 20:
+                    if (j < 20):
                         tab_enemy[j] = case_x
                         tab_enemy[j + 1] = case_y
                         j = j + 2
 
             tab_player = [0 for j in range(0, 1)]
-            case_player = int(self.game.player.true_x * 40 / WIDTH) - 1
+            case_player = int(self.game.player.true_x * 60 / WIDTH)
             tab_player[0] = case_player
 
             tab_enemy_lasers = np.ndarray.flatten(np.array(tab_enemy_lasers))
@@ -165,35 +167,35 @@ class GameAi:
             # Normalizing inputs
             norm_cooldown = self.game.player.cool_down_counter / self.game.player.COOLDOWN
 
-            tab_enemy_lasers = [0 for i in range(0, 30)]
+            tab_enemy_lasers = [-1 for i in range(0, 24)]
             j = 0
             for enemy in self.game.enemies:
                 for laser in enemy.lasers:
                     if laser.true_y > 0 and 0 < laser.true_x < WIDTH:
-                        case_x = int(laser.true_x * 40 / WIDTH)
-                        case_y = int(laser.true_y * 11 / HEIGHT)
+                        case_x = int(laser.true_x * 60 / WIDTH)
+                        case_y = int(laser.true_y * 60 / HEIGHT)
                         # print(case_x, case_y)
                         tab_enemy_lasers[j] = case_x
                         tab_enemy_lasers[j + 1] = case_y
                         j = j + 2
-                        # tab_enemy_lasers[case_x][case_y - 1] = 1
-                        # tab_enemy_lasers[case_x][case_y + 1] = 1
 
-            tab_player_lasers = [0 for j in range(1, 41)]
+            tab_player_lasers = [-1 for j in range(0, 12)]
+            i = 0
             for laser in self.game.player.lasers:
                 laser_matrice_x = laser.true_x
                 laser_matrice_y = laser.true_y
-                case_x = int(laser.true_x * 40 / WIDTH)
-                tab_player_lasers[case_x] += 1
+                case_x = int(laser.true_x * 60 / WIDTH)
+                tab_player_lasers[i] = case_x
+                i = i + 1
 
             tab_enemy = [-1 for i in range(0, 20)]
-            j = 0;
+            j = 0
             for enemy in self.game.enemies:
                 matrice_x = enemy.true_x
                 matrice_y = enemy.true_y
                 if 0 < enemy.true_y:
-                    case_x = int(enemy.true_x * 40 / WIDTH)
-                    case_y = int(enemy.true_y * 5 / HEIGHT)
+                    case_x = int(enemy.true_x * 60 / WIDTH)
+                    case_y = int(enemy.true_y * 60 / HEIGHT)
                     # print(case_x, case_y)
                     if (j < 20):
                         tab_enemy[j] = case_x
@@ -204,14 +206,21 @@ class GameAi:
             while i < 20:
                 if tab_enemy[i] != -1:
                     j = tab_enemy[i]
-                    if tab_player_lasers[j] == 0:
+                    exist = 0
+                    x = 0
+                    while x < 12:
+                        if tab_player_lasers[x] == j:
+                            exist = 1
+                            x = 12
+                        x = x + 1
+                    if exist == 0:
                         genome.fitness -= 0.02
-                    elif tab_enemy[i + 1] == 4:
+                    if tab_enemy[i + 1] > 45:
                         genome.fitness -= 0.1
                 i = i + 2
 
             tab_player = [0 for j in range(0, 1)]
-            case_player = int(self.game.player.true_x * 40 / WIDTH) - 1
+            case_player = int(self.game.player.true_x * 60 / WIDTH)
             tab_player[0] = case_player
 
             tab_enemy_lasers = np.ndarray.flatten(np.array(tab_enemy_lasers))
@@ -295,17 +304,17 @@ def parallelEval(genome, c):
 
 
 def run_neat(c):
-    p = neat.Checkpointer.restore_checkpoint("neat-checkpoint-81")
+    p = neat.Checkpointer.restore_checkpoint("neat-checkpoint-405")
     # p = neat.Population(c)
     p.add_reporter(neat.StdOutReporter(True))
     stats = neat.StatisticsReporter()
     p.add_reporter(stats)
     p.add_reporter(neat.Checkpointer(1))
-    pe = neat.ParallelEvaluator(3, parallelEval)
+    pe = neat.ParallelEvaluator(2, parallelEval)
 
     best = None
     # best = p.run(eval_genomes, 100)
-    best = p.run(pe.evaluate, 4)
+    best = p.run(pe.evaluate, 50)
 
     with open("best.pickle", "wb") as f:
         pickle.dump(best, f)
@@ -344,6 +353,6 @@ if __name__ == "__main__":
     config = neat.Config(neat.DefaultGenome, neat.DefaultReproduction, neat.DefaultSpeciesSet,
                          neat.DefaultStagnation, config_path)
 
-    run_neat(config)
-    #test_ai(config)
+    #run_neat(config)
+    test_ai(config)
     # vis_net(config)
