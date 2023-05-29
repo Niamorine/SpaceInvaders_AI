@@ -8,6 +8,15 @@ librairie utilisée pour dessiner le jeu
 - **neat-python**:
 librairie pour l'implémentation de Neat en python
 
+- **numpy**:
+librairie utilisée pour calculée les inputs du réseau sous forma de matrice et transformation
+
+- **graphviz**:
+librairie utilisée pour générer les .svg des réseaux
+
+- **matplotlib**:
+librairie utilisée pour généerer les .svg des réseaux
+
 
 # Utilisation
 
