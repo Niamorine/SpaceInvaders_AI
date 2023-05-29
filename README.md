@@ -1,13 +1,37 @@
-# SpaceInvaders_AI
+### **!!! Python 3.10 ou supérieur requis !!!**
 
-Pour jouer soi-même: play.py
+# Dépendances
 
-L'ia est dans main.py
+- **pygame**:
+librairie utilisée pour dessiner le jeu
 
-Il faut installer le module neat
+- **neat-python**:
+librairie pour l'implémentation de Neat en python
 
-Pour lancer l'apprentissage, dans le main tout en bas, décommenter la ligne <code>run_neat(config)</code> et commenter <code>test_ai(config)</code>.
 
-Pour visualier la meilleur ia enregistrée jusqu'ici, décommenter la ligne <code>test_ai(config)</code>et commenter la ligne <code>run_neat(config)</code>.
+# Utilisation
+
+## Jouer
+
+Pour jouer soi-même: python play.py
+
+## IA
+
+Le dossier *game* constitue le package du jeu.
+Tous les autres dossiers contiennent une version de l'ia différentes, contenues dans le <code>main.py</code> du dossier
+
+### Faire jouer l'IA
+
+Pour la voire jouer, tout en bas du <code>main.py</code>, il suffit simplement de commenter la ligne run_neat() et décommenter la ligne test_ai():  
+<code>\# run_neat(configs)
+test_ai(configs) </code>
+
+### Entraîner l'IA
+
+Pour l'entraîner, faire l'inverse:  
+<code>run_neat(configs)
+\# test_ai(configs) </code>
+
+
 
 
