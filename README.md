@@ -13,7 +13,7 @@ librairie pour l'implémentation de Neat en python
 
 ## Jouer
 
-Pour jouer soi-même: python play.py
+Pour jouer soi-même: `python play.py`
 
 ## IA
 
@@ -26,12 +26,12 @@ Pour la voire jouer, tout en bas du <code>main.py</code>, il suffit simplement d
 <code>\# run_neat(configs)
 test_ai(configs) </code>
 
+Puis: `python main.py`
+
 ### Entraîner l'IA
 
 Pour l'entraîner, faire l'inverse:  
 <code>run_neat(configs)
 \# test_ai(configs) </code>
 
-
-
-
+Puis: `python main.py`
