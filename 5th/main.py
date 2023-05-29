@@ -11,20 +11,9 @@ import pickle
 from game.consts import WIDTH, HEIGHT
 from game.game import Game
 from game import visualize
-from svglib.svglib import svg2rlg
-from reportlab.graphics import renderPM
-from PIL import Image
 import numpy as np
 
 debug = False
-
-
-def svg2png():
-    drawing = svg2rlg('graph_best_so_far.svg')
-    renderPM.drawToFile(drawing, 'graph_best_so_far.png', fmt='PNG')
-    im = Image.open('graph_best_so_far.png')
-    im.show()
-
 
 class GameAi:
     def __init__(self, game, draw):
