@@ -18,29 +18,31 @@ librairie utilisée pour générer les .svg des réseaux
 librairie utilisée pour généerer les .svg des réseaux
 
 
-# Utilisation
-
-## Jouer
+# Jouer
 
 Pour jouer soi-même: `python play.py`
 
-## IA
+# Utilisation de l'IA
 
-Le dossier *game* constitue le package du jeu.
-Tous les autres dossiers contiennent une version de l'ia différentes, contenues dans le <code>main.py</code> du dossier
+Le dossier *game* constitue le package du jeu.  
+`1ère_implémentation`, `2ème_implémentation` et `3ème_implémentation` contiennent chacun une des implémentation présentées dans le rapport, dans le même ordre.  
+Chacune de ces implémentations contient un fichier `main.py` qu'il faut exécuter pour utiliser l'ia.  
 
-### Faire jouer l'IA
+Seule la 1ère implémentation est commentée, avec des explications. Si vous souhaitez lire et comprendre le code, il est grandement recommandé de le faire sur celle-ci.  
+Les autres implémentations sont très similaires, donc si vous comprenez la 1ère, vous devriez comprendre les autres.
 
-Pour la voire jouer, tout en bas du <code>main.py</code>, il suffit simplement de commenter la ligne run_neat() et décommenter la ligne test_ai():  
-<code>\# run_neat(configs)
-test_ai(configs) </code>
+## Faire jouer l'IA
+
+Pour la voire jouer, tout en bas du `main.py`, il suffit simplement de commenter la ligne run_neat() et décommenter la ligne test_ai():  
+`# run_neat(configs)`  
+`test_ai(configs)`
 
 Puis: `python main.py`
 
-### Entraîner l'IA
+## Entraîner l'IA
 
 Pour l'entraîner, faire l'inverse:  
-<code>run_neat(configs)
-\# test_ai(configs) </code>
+`run_neat(configs)`  
+`# test_ai(configs)`  
 
 Puis: `python main.py`
