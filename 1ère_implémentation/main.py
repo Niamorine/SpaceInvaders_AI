@@ -20,24 +20,28 @@ Seule version commentée
 
 """
 
-
+# classe mettant en relation une instance de jeu avec un génome
 class GameAi:
-    def __init__(self, game, draw):
-        self.genome = None
+    def __init__(self, game: Game, draw: bool):
+        self.genome = None # le génome sera donné lors de l'entraînement ou du test
         self.game = game
-        self.draw = draw
+        self.draw = draw # pour savoir si on ouvre et dessine dans une fenêtre
 
+    # Déplacement à gauche
     def move_left(self):
         if self.game.player.x - self.game.player_vel > 0:
             self.game.player.move_left()
 
+    # Déplacement à droite
     def move_right(self):
         if self.game.player.x + self.game.player_vel + self.game.player.get_width() < WIDTH:
             self.game.player.move_right()
 
+    # Tirer
     def shoot(self):
         self.game.player.shoot()
 
+    # Calcul des données que l'on passe en entré du réseau
     def compute_inputs(self):
         nearest_enemy_y = 0
         nearest_enemy_x = 0
@@ -45,9 +49,12 @@ class GameAi:
         nearest_laser_dist = (WIDTH ** 2 + HEIGHT ** 2) ** 0.5
         nearest_laser_relative_x = WIDTH
         nearest_laser_relative_y = HEIGHT
-        if len(self.game.enemies) >= 1:
+        if len(self.game.enemies) >= 1: # s'il y a au moins 1 ennemi
+            # On récupère les coordonnées de l'ennemi le plus proche de nous
             nearest_enemy_y = self.game.enemies[0].y + self.game.enemies[0].get_height()/2
             nearest_enemy_x = self.game.enemies[0].x + self.game.enemies[0].get_width()/2
+        
+        # On récupère les coordonnées du laser ennemi le plus proche de nous
         for enemy in self.game.enemies:
             for laser in enemy.lasers:
                 laser_relative_x = laser.true_x - self.game.player.true_x
@@ -62,28 +69,33 @@ class GameAi:
         relative_enemy_y = nearest_enemy_y - self.game.player.y
         relative_enemy_x = nearest_enemy_x - self.game.player.x
 
-        # Norme les valeurs
+        # On norme les valeurs
         norm_relative_enemy_x = relative_enemy_x/WIDTH
         norm_relative_enemy_y = relative_enemy_y/HEIGHT
         norm_player_x = self.game.player.x/WIDTH
         norm_player_y = self.game.player.y/HEIGHT
         norm_nearest_laser_dist = nearest_laser_dist / ((WIDTH ** 2 + HEIGHT ** 2) ** 0.5)
-        norm_cooldown = self.game.player.cool_down_counter / self.game.player.COOLDOWN
+        norm_cooldown = self.game.player.cool_down_counter / self.game.player.COOLDOWN # cooldown est le temps d'attente avant de pouvoir tirer à nouveau
         norm_nearest_laser_relative_x = nearest_laser_relative_x / WIDTH
         norm_nearest_laser_relative_y = nearest_laser_relative_y /HEIGHT
 
+        # On retourne les valeurs sous la forme de tuple pour les passer directement à neat
         return (norm_cooldown, norm_nearest_laser_relative_x, norm_nearest_laser_relative_y,
                                    norm_relative_enemy_x, norm_relative_enemy_y, laser_above)
-    
+
+    # Pour tester un génome dans une fenêtre de jeu et pouvoir l'observer
     def test_ai(self, genome, c):
-        net = neat.nn.FeedForwardNetwork.create(genome, c)
+        net = neat.nn.FeedForwardNetwork.create(genome, c) # réseau du génome
+
+        # Boucle de jeu
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     quit()
-            inputs = self.compute_inputs()
-            output = net.activate(inputs)
-            decision = output.index(max(output))  # 0 is shoot, 1 is move left, 2 is move right, 3 is do nothing
+
+            inputs = self.compute_inputs() # calcule des valeurs que l'on donne en entrée
+            output = net.activate(inputs) # on donne les inputs au réseau et il nous renvoie les valeurs de sorties
+            decision = output.index(max(output))  # 0 = tirer, 1 = aller à gauche, 2 = aller à droite, 3 = ne rien faire
             match decision:
                 case 0:
                     self.shoot()
@@ -93,10 +105,13 @@ class GameAi:
                     self.move_right()
                 case 3:
                     pass
-            game_info = self.game.loop()
-            if game_info.lost:
-                print(f"Total d'ennemies tués: {game_info.nb_enemies_killed}")
-                break
+            
+            # fait avancer le jeu d'un pas
+            game_info = self.game.loop() # contient des infos (si on a perdu, nombres d'enemies tué)
+
+            if game_info.lost: # on a perdu
+                print(f"Total d'ennemies tués: {game_info.nb_enemies_killed}") # on afficher le nombre d'ennemis tués
+                break # fin de la partie, retour à la fonction d'appel
 
     # Entrainement
     def train_ai(self, genome, c):
